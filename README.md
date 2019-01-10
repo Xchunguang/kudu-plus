@@ -121,4 +121,8 @@ kudu-plus是可视化管理kudu的工具，由于kudu虽然是列式数据库，
 
 #### 软件截图
 
+![soft1](https://github.com/Xchunguang/kudu-plus/blob/master/src/main/resources/pages/images/soft-1.jpg)
 
+![soft2](https://github.com/Xchunguang/kudu-plus/blob/master/src/main/resources/pages/images/soft-2.jpg)
+
+![soft3](https://github.com/Xchunguang/kudu-plus/blob/master/src/main/resources/pages/images/soft-3.jpg)
