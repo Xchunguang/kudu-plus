@@ -1,0 +1,20 @@
+#main-view {
+    -fx-border-width: 1;
+    -fx-border-color: silver;
+    -fx-background-color: white;
+}
+#pass-layout {
+	-fx-background-image: url("/pages/images/back.png");
+	-fx-background-repeat: no-repeat;
+    -fx-background-size: stretch stretch;
+    -fx-background-position: center center;
+}
+#name-text {
+	-fx-min-width: 50;
+    -fx-max-width: 100;
+    -fx-min-height: 30;
+    -fx-max-height: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch stretch;
+    -fx-background-position: center center;
+}

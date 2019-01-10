@@ -1,0 +1,40 @@
+body{
+    border-top: 1px solid #ccc;
+}
+.createConnectDiv {
+    min-width:300px;
+    min-height:300px;
+    max-width:500px;
+    max-height:500px;
+    margin:50px;
+}
+.createConnectDiv .form-horizontal .form-group > label{
+    font-weight: 500;
+}
+.createConnectDiv .form-horizontal .form-group > div{
+    border-radius: 0;
+}
+.createConnectDiv .form-horizontal .form-group > div > input{
+    border-radius: 0;
+    height: 30px;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    background: #efefef;
+    width: 100%;
+}
+.footer .footer-left{
+    display: inline-block;
+    float: left;
+}
+.footer .footer-right{
+    display: inline-block;
+    float: right;
+}
+.footer .btn-default{
+    border-radius: 0;
+    font-size: 12px;
+    padding: 2px 10px 2px 10px;
+    margin: 5px;
+}

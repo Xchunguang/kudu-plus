@@ -1,0 +1,536 @@
+body{
+    margin:0;
+    padding:0;
+}
+a{
+    cursor: pointer;
+}
+.mainBody {
+    width:100%;
+    height:100%;
+    background:#f7f7f9;
+    
+}
+.mainBody .headPart .dropdown{
+    width: 80px!important;
+    display: inline;
+}
+.mainBody .headPart .dropdown .btn-default{
+    font-size: 12px;
+    margin: 0;
+    padding: 3px 5px 3px 3px;
+    border: none;
+    border-radius: 0;
+    min-width: 50px;
+    background: #f7f7f9;
+}
+.mainBody .headPart .dropdown .btn-default:hover{
+    background: #ccc;
+}
+.mainBody .headPart .dropdown .dropdown-menu li a{
+    padding: 2px 2px 2px 8px;
+}
+.mainBody .headPart .dropdown .dropdown-menu li a:hover{
+    background: #00bcd4;
+}
+.mainBody .headPart .dropdown .dropdown-menu{
+    box-shadow: none;
+    border-radius: 0px;
+    margin-top: 5px;
+}
+.mainBody .iconPart{
+    border-bottom: 0.5px solid #eee;
+}
+.mainBody .iconPart .iconItem{
+    display: inline-block;
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
+    padding-left: 5px;
+}
+.mainBody .iconPart .iconItem:hover{
+    background: #ccc;
+    cursor:pointer;
+
+}
+.mainBody .iconPart .iconItem .iconFont{
+    display: block;
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    width: 60px;
+}
+.mainBody .listPart{
+    width:100%;
+    height: calc(100% - 136px);
+    background: #ffffff;
+}
+.mainBody .listPart .listPartDom{
+    height:100%;
+}
+.mainBody .listPart .listPartDom .connectList{
+    width: 220px;
+    height: calc(100% - 136px);
+    display: inline-block;
+    position: absolute;
+    overflow: auto;
+    border-right: 2px solid #ccc;
+}
+.mainBody .listPart .listPartDom .connectList .connectBlock{
+    width: 100%;
+    display: block;
+    height: 24px;
+    padding: 2px 10px 2px 20px;
+}
+.mainBody .listPart .listPartDom .connectList .activeBlock{
+    background: #ccc;
+}
+.mainBody .listPart .listPartDom .connectList .connectBlock .connecting{
+    color:green;
+}
+.mainBody .listPart .listPartDom .connectList .connectBlock:hover{
+    background: #ccc;
+    cursor: pointer;
+}
+.mainBody .listPart .listPartDom .detailPane{
+    width: calc(100% - 220px);
+    height: calc(100% - 136px);
+    display: inline-block;
+    position: absolute;
+    left: 220px;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs{
+    max-height: 26.4px;
+    overflow: auto;
+    border-bottom: none;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs>li{
+    cursor: pointer;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs>li>a{
+    border-radius: 0;
+    padding: 3px 10px 3px 10px;
+    font-size: 13px;
+    color: black;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs .active>a{
+    background:#efefef;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs .paneTitle:hover >span{
+    opacity: 1;
+}
+.mainBody .listPart .listPartDom .detailPane .nav-tabs .paneTitle .closeTitleBtn{
+    margin-left:5px;
+    font-size:10px;
+    cursor:pointer;
+    opacity: 0;
+    font-weight: 800;
+    border-bottom: 0.5px solid #795548;
+}
+
+
+
+.mainBody .footer{
+    width:100%;
+    height:30px;
+    background:#f7f7f9;
+}
+.mainBody .footer .footerInfo{
+    width:30%;
+    height:100%;
+    display: inline-block;
+    padding:7px 10px 2px 10px;
+    text-align: left;
+    border-right:1px solid #ccc;
+}
+.mainBody .footer .version{
+    width: 65%;
+    height: 100%;
+    display: inline-block;
+    padding: 8px 20px 2px 10px;
+    text-align: right;
+    float: right;
+}
+
+
+
+#menu{
+    width: 0; /*设置为0 隐藏自定义菜单*/
+    height: 125px;
+    overflow: hidden; /*隐藏溢出的元素*/
+    box-shadow: 0 2px 2px #888,2px 0 2px #ccc;
+    position: absolute; /*自定义菜单相对与body元素进行定位*/
+    background: #dddcdc;
+    font-size: 13px;
+}
+.menu{
+    width: 130px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.menu:hover{
+    background: #ccc;
+}
+
+
+/*TablePane 组件样式*/
+.detailPane .tab-content{
+    height: calc(100% - 26.4px);
+}
+.detailPane .tab-content .tab-pane{
+    height: 100%;
+}
+.detailPane .tab-content .tablePane {
+    width:100%;
+    height:100%;
+}
+.detailPane .tab-content .tablePane .tablePaneHead{
+    height: 30px;
+    background: #efefef;
+}
+.detailPane .tab-content .tablePane .tablePaneHead .paneBtn{
+    display: inline-block;
+    line-height: 30px;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.detailPane .tab-content .tablePane .tablePaneHead .paneBtn:hover{
+    background: #ccc;
+}
+.detailPane .tab-content .tablePane .tablePaneHead .searchTable{
+    float: right;
+    display: inline-block;
+    width: 150px;
+    height: 24px;
+    margin: 3px 20px 3px 0px;
+}
+.detailPane .tab-content .tablePane .tablePaneHead .searchTableBtn{
+    float: right;
+    margin: 8px -146px 8px 0px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.detailPane .tab-content .structure .tablePaneHead{
+    height: 30px;
+    background: #efefef;
+}
+.detailPane .tab-content .structure .tablePaneHead .paneBtn{
+    display: inline-block;
+    line-height: 30px;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.detailPane .tab-content .structure .tablePaneHead .paneBtn:hover{
+    background: #ccc;
+}
+.detailPane .tab-content .structure .tablePaneHead .searchTable{
+    float: right;
+    display: inline-block;
+    width: 150px;
+    height: 24px;
+    margin: 3px 20px 3px 0px;
+}
+.detailPane .tab-content .structure .tablePaneHead .searchTableBtn{
+    float: right;
+    margin: 8px -146px 8px 0px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.detailPane .tab-content .tablePane .tablePaneBody{
+    height: calc(100% - 30px);
+    overflow-y: auto;
+}
+.detailPane .tab-content .tablePane .tablePaneBody .tablePart{
+    display: inline-block;
+    width: 200px;
+    cursor: pointer;
+}
+.detailPane .tab-content .tablePane .tablePaneBody .selectTablePart{
+    background:#ccc;
+}
+.detailPane .tab-content .tablePane .tablePaneBody .tablePart:hover{
+    background:#ccc;
+}
+.detailPane .tab-content .tablePane .tablePaneBody .tablePart>.glyphicon{
+    margin-right: 5px;
+    line-height: 15px;
+}
+.detailPane .tab-content .tablePane .tablePaneBody .tablePart .tableNameSpan{
+    max-width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 12px;
+}
+
+.detailPane .tab-content .tablePane .filterArea{
+    width:100%;
+    border-bottom: 1px solid #ccc;
+    height:100px;
+    overflow: auto;
+}
+.detailPane .tab-content .tab-pane .filterArea{
+    width:100%;
+    border-bottom: 1px solid #ccc;
+    height:100px;
+    overflow: auto;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody{
+    display: block;
+    width: 100%;
+    overflow: auto;
+    background: white;
+    z-index: 2;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .lineHead{
+    background:white;
+    z-index: 2;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .lineHead .headSelect{
+    display: inline-block;
+    height: 22px;
+    width: 20px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    color: white;
+    font-weight: 800;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .lineHead .headSelect:hover{
+    background: #ccc;
+    color:#ccc;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .lineHead .headTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .lineHead .headTitle .dragBtn{
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    cursor: col-resize;
+    float: right;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .activeLine{
+    background: #03A9F4!important;
+    color: white;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineChanged{
+    background: #ffeb3b;
+    color: #ffeb3b;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineSelect{
+    display: inline-block;
+    height: 23px;
+    width: 20px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    color: white;
+    border-top: none;
+}
+
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+    font-size: 13px;
+    border-top: none;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineTitle:focus{
+    outline: -webkit-focus-ring-color none;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+    font-size: 13px;
+    border-top: none;
+}
+.detailPane .tab-content .tablePane .tableDataPaneBody .line .lineTitle:focus{
+    outline: -webkit-focus-ring-color none;
+}
+
+
+.detailPane .tab-content .structure .lineHead .headSelect{
+    display: inline-block;
+    height: 22px;
+    width: 20px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    color: white;
+}
+.detailPane .tab-content .structure .lineHead .headSelect:hover{
+    background: #ccc;
+    color:#ccc;
+}
+.detailPane .tab-content .structure .lineHead .headTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+}
+.detailPane .tab-content .structure .lineHead .headTitle .dragBtn{
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    cursor: col-resize;
+    float: right;
+}
+.detailPane .tab-content .structure .line .activeLine{
+    background: #03A9F4!important;
+    color: white;
+}
+.detailPane .tab-content .structure .line .lineChanged{
+    background: #ffeb3b;
+    color: #ffeb3b;
+}
+.detailPane .tab-content .structure .line .lineSelect{
+    display: inline-block;
+    height: 23px;
+    width: 20px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    color: white;
+    border-top: none;
+}
+
+.detailPane .tab-content .structure .line .lineTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+    font-size: 13px;
+    border-top: none;
+}
+.detailPane .tab-content .structure .line .lineTitle:focus{
+    outline: -webkit-focus-ring-color none;
+}
+.detailPane .tab-content .structure .line .lineTitle{
+    display: inline-block;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+    padding-left: 1px;
+    font-size: 13px;
+    border-top: none;
+}
+.detailPane .tab-content .structure .line .lineTitle:focus{
+    outline: -webkit-focus-ring-color none;
+}
+
+
+
+
+.detailPane .tab-content .tablePane .tableDataPanefooter{
+    display: block;
+    width: 100%;
+    height: 20px;
+    background: #efefef;
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .footerInfo{
+    font-size: 10px;
+    float: right;
+    line-height: 23px;
+    margin-right: 15px;
+
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .leftBtn{
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .pageInput{
+    height: 15px;
+    width: 20px;
+    margin: 0 5px 0 5px;
+    font-size: 12px;
+    border: none;
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .pageInput:focus{
+    outline: -webkit-focus-ring-color none;
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .rightBtn{
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.detailPane .tab-content .tablePane .tableDataPanefooter .totalPage{
+    font-size: 12px;
+}
+
+.filterBlock .filterName{
+    cursor:pointer;
+    z-index: 1;
+}
+.filterBlock .nameSelect{
+    display: block;
+    position: absolute;
+    width: 150px;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #888888;
+    box-shadow: 2px 2px 2px #888888;
+    margin-left: 10px;
+    background:white;
+}
+.filterBlock .relationSelect{
+    margin-left: 70px;
+    height: 110px;
+}
+.filterBlock .valueInput{
+    margin-left: 110px;
+    height:30px;
+    width:200px;
+}
+.filterBlock .nameSelect .curName{
+    padding: 1px 1px 1px 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.filterBlock .nameSelect .curName:hover{
+    background: #2196F3;
+    color: white;
+}
+.filterBlock .valueInputBtn{
+    border: 1px solid #ccc;
+    min-width: 10px;
+    min-height: 11px;
+    display: inline-block;
+}
+.unUseBtn{
+    cursor: no-drop;
+    color: #ccc;
+}
+.unUseBtn:hover{
+    background: #efefef!important;
+}

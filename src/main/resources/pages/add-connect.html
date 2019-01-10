@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height:100%;overflow: hidden">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>KuduPlus</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/add-connect.css" rel="stylesheet">
+    </head>
+    <body onselectstart="return false;" style="height:100%;">
+        <div class="createConnectDiv">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">连接名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="连接名称">
+                    </div>
+                </div><br/><br/>
+
+                <div class="form-group">
+                    <label for="inputIp" class="col-sm-2 control-label">连接ip</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputIp" placeholder="连接ip">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputPort" class="col-sm-2 control-label">连接端口</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPort" placeholder="7051">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                	<label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" id="element" data-placement="right" data-toggle="tooltip"  title="如果kudu集群有多个主节点，则ip和端口可以为多个，一一对应，以逗号隔开。暂不支持安全认证"></span>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <button onclick="testConnect()" class="btn btn-default">测试连接</button>
+            </div>
+            <div class="footer-right">
+                <button  onclick="saveConnect()" class="btn btn-default">保存</button>
+                <button  onclick="closeModel()" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/add-connect.js"></script>
+    </body>
+</html>
