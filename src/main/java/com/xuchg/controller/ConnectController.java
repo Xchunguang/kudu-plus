@@ -325,7 +325,7 @@ public class ConnectController {
 		arg1.setMinWidth(height);
 		arg1.getIcons().add(new Image(GlobalConstant.ICON));
 		arg1.centerOnScreen();
-		arg1.setTitle("新建连接");
+		arg1.setTitle("编辑表名");
 		arg1.initModality(Modality.APPLICATION_MODAL);
 		arg1.setMinHeight(height);
 		arg1.setMinWidth(width);
@@ -532,6 +532,13 @@ public class ConnectController {
     	URI address = new URI(url);
     	Desktop d = Desktop.getDesktop();
     	d.browse(address);
+    }
+    
+    /**
+     * please wait
+     */
+    public void pleaseWait(){
+    	showInfoAlert(Alert.AlertType.INFORMATION,"待开发...",true);
     }
 
 }

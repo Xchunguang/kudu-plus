@@ -18,7 +18,7 @@ var titleMenu = [
                 method:'toAddConnect()'
             },{
                 name:'导出连接',
-                method:'',
+                method:'pleaseWait()',
             },{
                 name:'退出',
                 method:'closeMainWindow()',
@@ -31,10 +31,10 @@ var titleMenu = [
         action:[
             {
                 name:'导入数据',
-                method:''
+                method:'pleaseWait()'
             },{
                 name:'导出数据',
-                method:''
+                method:'pleaseWait()'
             }
         ]
     },{
@@ -46,7 +46,7 @@ var titleMenu = [
                 method:'openGithub()'
             },{
                 name:'关于',
-                method:''
+                method:'pleaseWait()'
             }
         ]
     }
@@ -109,6 +109,10 @@ var clickBody = function(e){
 
 var openGithub = function(){
     connectController.openGithub();
+}
+
+var pleaseWait = function(){
+    connectController.pleaseWait();
 }
 
 /**
