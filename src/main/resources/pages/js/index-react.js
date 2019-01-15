@@ -1032,7 +1032,7 @@ class TableStructure extends React.Component{
           </div>
         </div>
           
-        <div className="tableDataPaneBody" style={{height:this.state.showFilter?"calc(100% - 149px)":"calc(100% - 49px)"}}>
+        <div className="tableDataPaneBody" style={{overflow:'auto',height:this.state.showFilter?"calc(100% - 149px)":"calc(100% - 49px)"}}>
           <div className="lineHead" style={{width:this.getLineWidth()+'px'}}>
               {this.getHeaderSelect()}
           </div>

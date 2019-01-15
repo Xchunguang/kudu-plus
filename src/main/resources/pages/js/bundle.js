@@ -10,6 +10,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+* 将此脚本编译成bundle.js
+*/
+
 var ConnectList = function (_React$Component) {
   _inherits(ConnectList, _React$Component);
 
@@ -1351,7 +1355,7 @@ var TableStructure = function (_React$Component9) {
         ),
         React.createElement(
           "div",
-          { className: "tableDataPaneBody", style: { height: this.state.showFilter ? "calc(100% - 149px)" : "calc(100% - 49px)" } },
+          { className: "tableDataPaneBody", style: { overflow: 'auto', height: this.state.showFilter ? "calc(100% - 149px)" : "calc(100% - 49px)" } },
           React.createElement(
             "div",
             { className: "lineHead", style: { width: this.getLineWidth() + 'px' } },
