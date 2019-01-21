@@ -6,7 +6,6 @@
 	<groupId>com.xuchg</groupId>
 	<artifactId>KuduPlus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<description>RedisPlus project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,12 +32,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<!--邮件依赖 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<!--lombok插件 -->
