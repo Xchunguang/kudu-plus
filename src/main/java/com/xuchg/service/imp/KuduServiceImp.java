@@ -422,7 +422,7 @@ public class KuduServiceImp implements KuduService {
 			result.add("HASH ("+hashCode+") PARTITIONS " + curHashSch.getNumBuckets());
 		}
 		String rangeCode = "";
-		for(Integer rangeIndex : range.getColumnIds()){
+		for(Integer rangeIndex : range.getColumns()){
 			if(StringUtils.isNotBlank(rangeCode)){
 				rangeCode += "，";
 			}
@@ -502,11 +502,6 @@ public class KuduServiceImp implements KuduService {
 						row.addDouble(columnSchema.getName(), Double.valueOf(curRow.get(i).toString()));
 					}
 					break;
-				case DECIMAL:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
-						row.addDecimal(columnSchema.getName(), BigDecimal.valueOf(Double.valueOf(curRow.get(i).toString())));
-					}
-					break;
 				default:
 					if(StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addString(columnSchema.getName(), curRow.get(i).toString());
@@ -553,9 +548,6 @@ public class KuduServiceImp implements KuduService {
 						break;
 					case DOUBLE:
 						row.add(rowResult.getDouble(columnSchema.getName()));
-						break;
-					case DECIMAL:
-						row.add(rowResult.getDecimal(columnSchema.getName()));
 						break;
 					default:
 						row.add(rowResult.getString(columnSchema.getName()));
@@ -620,12 +612,6 @@ public class KuduServiceImp implements KuduService {
 				        schema.getColumn(filter.getColumnName()),
 				        filter.getType(),
 				        (double)filter.getValue());
-				break;
-			case DECIMAL:
-				predicate = KuduPredicate.newComparisonPredicate(
-				        schema.getColumn(filter.getColumnName()),
-				        filter.getType(),
-				        (BigDecimal)filter.getValue());
 				break;
 			default:
 				predicate = KuduPredicate.newComparisonPredicate(

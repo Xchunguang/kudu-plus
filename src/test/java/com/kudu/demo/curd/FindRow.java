@@ -99,9 +99,6 @@ public class FindRow {
 					case DOUBLE:
 						row.add(rowResult.getDouble(columnSchema.getName()));
 						break;
-					case DECIMAL:
-						row.add(rowResult.getDecimal(columnSchema.getName()));
-						break;
 					default:
 						row.add(rowResult.getString(columnSchema.getName()));
 						break;
