@@ -136,5 +136,5 @@ master为主要分支，使用kudu-client1.8.0，但我偶尔发现在某些集�
 ![soft3](https://github.com/Xchunguang/kudu-plus/blob/master/src/main/resources/pages/images/soft-3.jpg)
 
 #### 下载试用
-链接：https://pan.baidu.com/s/1hMzBGyGH6xvsLksolc_FaQ 
-提取码：7e7o 
+链接：https://pan.baidu.com/s/1_VX0wwAIh60-Mnus8r8uqQ 
+提取码：7ltk 
