@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,6 +22,7 @@ import com.xuchg.util.GlobalConstant;
 import com.xuchg.vo.ConnectVO;
 import com.xuchg.window.MainWindow;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.concurrent.Worker;
 import javafx.scene.Scene;
@@ -57,6 +56,14 @@ public class ConnectController {
 	private ConnectService connectService;
 	@Autowired
 	private KuduService kuduService;
+	
+	private static Thread connectThread = null;
+	
+	private static Thread scanThread = null;
+	
+	private static String scanResult = "";
+	
+	private static String connectStatus = "";
 	
 	public void insertConnect(){
 		System.out.println("click this ");
@@ -158,23 +165,53 @@ public class ConnectController {
 	 * @param connectPk
 	 */
 	public String connect(String connectPk){
+		connectStatus = "success";
+		
 		if(kuduService.kuduPool.containsKey(connectPk)){
-			return "success";
+			return connectStatus;
 		}
-		Alert alert = showInfoAlert(Alert.AlertType.INFORMATION, "连接中...",false);
-		ConnectVO vo = connectService.findByPk(connectPk);
-		boolean success = kuduService.connect(vo);
-		if(success){
-			alert.close();
-			MainWindow.webEngine.executeScript("changeConnectNum("+kuduService.kuduPool.keySet().size()+")");
-			MainWindow.webEngine.executeScript("initTable("+JSON.toJSONString(kuduService.tablePool.get(connectPk).getTablesList())+")");
-			curConnectPk = connectPk;
-			return "success";
-		}else{
-			alert.close();
-			showInfoAlert(Alert.AlertType.ERROR,"连接失败",true);
-			return "fail";
-		}
+		Alert alert = new Alert(Alert.AlertType.INFORMATION,"连接中...");
+		alert.setHeaderText("");
+		alert.getButtonTypes().remove(0);
+		alert.getButtonTypes().add(ButtonType.CANCEL);
+		
+		connectThread = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				ConnectVO vo = connectService.findByPk(connectPk);
+				boolean success = kuduService.connect(vo);
+				if(!connectThread.isInterrupted()){
+					Platform.runLater(new Runnable(){
+
+						@Override
+						public void run() {
+							if(success){
+								alert.close();
+								MainWindow.webEngine.executeScript("changeConnectNum("+kuduService.kuduPool.keySet().size()+")");
+								MainWindow.webEngine.executeScript("initTable("+JSON.toJSONString(kuduService.tablePool.get(connectPk).getTablesList())+")");
+								curConnectPk = connectPk;
+							}else{
+								connectStatus = "fail";
+								alert.close();
+								showInfoAlert(Alert.AlertType.ERROR,"连接失败",true);
+							}
+						}
+					});
+				}
+			}
+		});
+
+		connectThread.start();
+		
+		alert.showAndWait().ifPresent(response ->{
+			if(response == ButtonType.CANCEL){
+				connectThread.interrupt();
+				connectStatus = "fail";
+			}
+		});
+		
+		return connectStatus;
 	}
 	
 	/**
@@ -355,23 +392,57 @@ public class ConnectController {
 	 * @return
 	 */
 	public String scanTable(String dtoJson){
-		Alert waitAlert = showInfoAlert(Alert.AlertType.INFORMATION,"读取中...",false);
 		TableSearchDTO dto = JSON.parseObject(dtoJson,TableSearchDTO.class);
-		try{
-			TableSearchDTO resultDto = kuduService.scanTable(dto);
-			waitAlert.close();
-			if(resultDto != null){
-				return JSON.toJSONString(resultDto);
-			}else{
-				showInfoAlert(Alert.AlertType.ERROR,"读取超时",false);
-				return JSON.toJSONString(dto);
-			}
-		}catch(Exception e){
-			waitAlert.close();
-			showInfoAlert(Alert.AlertType.ERROR,"参数错误",false);
-			return JSON.toJSONString(dto);
-		}
+		scanResult = JSON.toJSONString(dto);
 		
+		Alert alert = new Alert(Alert.AlertType.INFORMATION,"读取中...");
+		alert.setHeaderText("");
+		alert.getButtonTypes().remove(0);
+		alert.getButtonTypes().add(ButtonType.CANCEL);
+		
+		scanThread = new Thread(new Runnable(){
+			@Override
+			public void run() {
+				try{
+					TableSearchDTO resultDto = kuduService.scanTable(dto);
+					if(!scanThread.isInterrupted()){
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run() {
+								alert.close();
+								if(resultDto != null){
+									scanResult = JSON.toJSONString(resultDto);
+								}else{
+									showInfoAlert(Alert.AlertType.ERROR,"读取超时",false);
+									scanResult = JSON.toJSONString(dto);
+								}
+							}
+						});
+					}
+				}catch(Exception e){
+					if(!scanThread.isInterrupted()){
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run() {
+								alert.close();
+								showInfoAlert(Alert.AlertType.ERROR,"参数错误",false);
+								scanResult = JSON.toJSONString(dto);
+							}
+						});
+					}
+				}
+			}
+		});
+		
+		scanThread.start();
+		
+		alert.showAndWait().ifPresent(response ->{
+			if(response == ButtonType.CANCEL){
+				scanThread.interrupt();
+			}
+		});
+		
+		return scanResult;
 	}
 
 	

@@ -200,8 +200,8 @@ $(".editBtn").click(function(){
 $(".closeBtn").click(function(){
     document.querySelector('#menu').style.height=0;
     var result = connectController.closeConnect(curConnectPk);
+    disConnect(curConnectPk);
     if(result === 'success'){
-        disConnect(curConnectPk);
         curTableName = '';
     }
 });

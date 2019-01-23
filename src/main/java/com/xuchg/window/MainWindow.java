@@ -20,8 +20,10 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 import javafx.scene.web.WebEngine;
@@ -64,14 +66,14 @@ public class MainWindow extends Application {
 		passLayout.getStylesheets().add(GlobalConstant.MAIN_VIEW_STYLE);
 		Scene passScene = new Scene(passLayout,waitWidth,waitHeight);
 		arg0.centerOnScreen();
+		arg0.getIcons().add(new Image(GlobalConstant.ICON));
 		arg0.setWidth(waitWidth);
 		arg0.setHeight(waitHeight);
 		arg0.setScene(passScene);
 		arg0.initStyle(StageStyle.UNDECORATED);
 		arg0.show();
 		
-		
-		Platform.runLater(new Runnable() {
+		new Thread(new Runnable() {
 		    @Override
 		    public void run() {
 				StackPane layout = new StackPane();//布局
@@ -84,19 +86,24 @@ public class MainWindow extends Application {
 					connectController = context.getBean(ConnectController.class);
 					connectService = context.getBean(ConnectService.class);
 				}
-				stage =  new Stage();
-				layout.getChildren().add(getBodyView());
-				Scene scene = new Scene(layout,minWidth,minHeight);
-				stage.setScene(scene);
-				stage.setMinHeight(minHeight);
-				stage.setMinWidth(minWidth);
-				stage.getIcons().add(new Image(GlobalConstant.ICON));
-				stage.centerOnScreen();
-				stage.setTitle(GlobalConstant.TITLE);
-				stage.show();
-				arg0.close();
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run() {
+						stage =  new Stage();
+						layout.getChildren().add(getBodyView());
+						Scene scene = new Scene(layout,minWidth,minHeight);
+						stage.setScene(scene);
+						stage.setMinHeight(minHeight);
+						stage.setMinWidth(minWidth);
+						stage.getIcons().add(new Image(GlobalConstant.ICON));
+						stage.centerOnScreen();
+						stage.setTitle(GlobalConstant.TITLE);
+						stage.show();
+						arg0.close();						
+					}
+				});
 		    }
-		});
+		}).start();
 		
 	}
 	
