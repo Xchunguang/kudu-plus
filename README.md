@@ -97,6 +97,13 @@ kudu-plus是可视化管理kudu的工具，由于kudu虽然是列式数据库，
 
 - 表的副本为奇数，且不能大于7，在建表时指定，且不可修改
   
+## 分支说明
+
+master为主要分支，使用kudu-client1.8.0，但我偶尔发现在某些集群的使用中产生如下错误：
+
+    Caused by: org.apache.kudu.client.NoLeaderFoundException: Master config (192.168.20.133:7051) has no leader.Exceptions received: org.apache.kudu.client.RecoverableException: connection disconnected
+		
+但是将kudu-client的版本改为1.4.0则不会产生此问题，为了正常使用产生了develop-1.4分支，问题正在研究，给出的打包文件也先基于develop-1.4分支进行打包
 
 ## kudu-plus版本功能实现
 
@@ -128,5 +135,6 @@ kudu-plus是可视化管理kudu的工具，由于kudu虽然是列式数据库，
 ![soft3](https://github.com/Xchunguang/kudu-plus/blob/master/src/main/resources/pages/images/soft-3.jpg)
 
 #### 下载试用
-链接：https://pan.baidu.com/s/1Kq_DJz-NDBv4AQaYQL4m7g 
-提取码：1u6h 
+链接：https://pan.baidu.com/s/1hMzBGyGH6xvsLksolc_FaQ 
+提取码：7e7o 
+
