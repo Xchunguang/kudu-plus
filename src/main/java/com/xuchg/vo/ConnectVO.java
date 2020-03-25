@@ -30,13 +30,13 @@ public class ConnectVO extends BaseVO{
 	@Column(name = "PK_CONNECT", unique = true, nullable = false)
 	private String connectPk;
 	
-	@Column(name = "NAME", length=55)
+	@Column(name = "NAME", length=255)
 	private String name;
 	
-	@Column(name = "IP_ADDRESS",length=30)
+	@Column(name = "IP_ADDRESS",length=255)
 	private String ipAddress;
 	
-	@Column(name = "PORT",length=100)
+	@Column(name = "PORT",length=255)
 	private String port = "7051";
 	
 }

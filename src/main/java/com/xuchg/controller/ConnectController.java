@@ -41,6 +41,7 @@ import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 
 @Component
+@SuppressWarnings("all")
 public class ConnectController {
 
 	private Stage arg1 = null;

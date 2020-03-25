@@ -55,7 +55,7 @@ public class KuduServiceImp implements KuduService {
 				for(int i=0;i<ipArr.length;i++){
 					kuduAddress.append(ipArr[i]);
 					kuduAddress.append(":");
-					if(portArr[i] != null){
+					if(portArr.length - 1 >= i && portArr[i] != null){
 						kuduAddress.append(portArr[i]);
 					}else{
 						kuduAddress.append("7051");
@@ -454,61 +454,61 @@ public class KuduServiceImp implements KuduService {
 			}
 			switch(columnSchema.getType()){
 				case INT8:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addByte(columnSchema.getName(), Byte.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case INT16:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addShort(columnSchema.getName(), Short.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case INT32:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addInt(columnSchema.getName(), Integer.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case INT64:
 				case UNIXTIME_MICROS:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null && StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addLong(columnSchema.getName(),Long.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case BINARY:
 					//二进制字段不支持修改,插入需要
 					if(updateType.equals(GlobalConstant.UpdateType.INSERT)){
-						if(StringUtils.isNotBlank(curRow.get(i).toString())){
+						if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 							row.addBinary(columnSchema.getName(), curRow.get(i).toString().getBytes());
 						}
 					}
 					break;
 				case STRING:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addString(columnSchema.getName(), curRow.get(i).toString());
 					}
 					break;
 				case BOOL:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addBoolean(columnSchema.getName(), Boolean.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case FLOAT:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addFloat(columnSchema.getName(), Float.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case DOUBLE:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addDouble(columnSchema.getName(), Double.valueOf(curRow.get(i).toString()));
 					}
 					break;
 				case DECIMAL:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addDecimal(columnSchema.getName(), BigDecimal.valueOf(Double.valueOf(curRow.get(i).toString())));
 					}
 					break;
 				default:
-					if(StringUtils.isNotBlank(curRow.get(i).toString())){
+					if(curRow.get(i) != null &&StringUtils.isNotBlank(curRow.get(i).toString())){
 						row.addString(columnSchema.getName(), curRow.get(i).toString());
 					}
 					break;
